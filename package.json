@@ -1,0 +1,30 @@
+{
+  "name": "@agwright/payrolladmin",
+  "version": "1.0.0",
+  "private": true,
+  "description": "This is a basic website for CRUD operations on employees in a payroll management system.",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "mk-log": "mkdir log && touch log/payrolladmin.log",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andrew Wright <agwright121@yahoo.com>",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "bunyan": "~1.8.15",
+    "ejs": "~3.1.6",
+    "express": "~4.17.1",
+    "formik": "~2.2.9",
+    "mongodb": "~4.2.0",
+    "react": "~17.0.2",
+    "react-dom": "~17.0.2",
+    "yup": "~0.32.11"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/preset-react": "^7.16.0",
+    "sass": "^1.43.4"
+  }
+}
