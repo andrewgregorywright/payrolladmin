@@ -1,0 +1,17 @@
+.validation {
+  color: #c00;
+}
+
+.emp-table__header .row {
+  font-size: 1.2rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.emp-table__rows .row {
+  border-bottom: 1px solid #ccc;
+}
+.emp-table__rows .row:nth-child(odd) {
+  background-color: #efefef;
+}
+
+/*# sourceMappingURL=general.css.map */

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>Employees | PayrollAdmin</title>
+
+		<%-include('../../partials/jquery')%>
+		<%-include('../../partials/react')%>
+		<%-include('../../partials/bootstrap')%>
+
+		<link href="/public/css/general.css" rel="stylesheet" type="text/css" />
+
+	</head>
+	<body>
+		<div>
+			<div id="header">
+			</div>
+		</div>
+		<div id="body">
+			<div class="container-lg">
+				<div class="row">
+					<div class="col">
+						<div id="main"
+							 class="mt-4">
+							<h1 class="text-center">Employee List</h1>
+							<div class="row justify-content-center">
+								<div class="col-12">
+									<div id="employees-main-content"></div>
+								</div>
+
+								<div class="modal fade"
+									 id="calculatorModal"
+									 tabindex="-1"
+									 aria-labelledby="calculatorModalLabel"
+									 aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h5 class="modal-title"
+													id="calculatorModalLabel">Salary Calculator</h5>
+												<button type="button"
+														class="btn-close"
+														data-bs-dismiss="modal"
+														aria-label="Close"></button>
+											</div>
+											<div class="modal-body">
+
+												<div class="row mb-3">
+													<div class="col-12 col-sm-4">
+														<label>Salary:</label>
+													</div>
+													<div class="col-12 col-sm-8" id="modal-salary">
+													</div>
+												</div>
+
+												<div class="row mb-3">
+													<div class="col-12 col-sm-4">
+														<label for="modal-flat"
+															   class="col-form-label">Flat deduction:</label>
+													</div>
+													<div class="col-12 col-sm-8">
+														<input  type="text"
+																id="modal-flat"
+																class="form-control" />
+													</div>
+												</div>
+
+												<div class="row mb-3">
+													<div class="col-12 col-sm-4">
+														<label for="modal-percentage"
+															   class="col-form-label">Percentage deduction:</label>
+													</div>
+													<div class="col-12 col-sm-8">
+														<input  type="text"
+																id="modal-percentage"
+																class="form-control" />
+													</div>
+												</div>
+
+												<div class="row mb-3">
+													<div class="col-12 col-sm-4">
+														<label>Total:</label>
+													</div>
+													<div class="col-12 col-sm-8 text-end"
+														id="modal-total">
+													</div>
+												</div>
+
+											</div>
+											<div class="modal-footer">
+												<button type="button"
+														class="btn btn-secondary"
+														data-bs-dismiss="modal">Close</button>
+												<button type="button"
+														id="modal-calculate-btn"
+														class="btn btn-secondary">Calculate</button>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

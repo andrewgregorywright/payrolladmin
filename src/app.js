@@ -1,15 +1,10 @@
 import express					from 'express'
 import path						from 'path'
-import { fileURLToPath }		from 'url'
-import { dirname }				from 'path'
 import getConfig				from './config/getConfig.js'
 import getLogger				from './logging/getLogger.js'
 
 import employeesRoutes			from './routes/employees.js'
 import homeRoutes				from './routes/home.js'
-
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
 
 let config		= getConfig(),
 	log			= getLogger()

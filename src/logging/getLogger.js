@@ -1,11 +1,6 @@
 import bunyan					from 'bunyan'
 import path						from 'path'
-import { fileURLToPath }		from 'url'
-import { dirname }				from 'path'
 import getConfig				from '../config/getConfig.js'
-
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
 
 let config = getConfig()
 
@@ -21,7 +16,7 @@ if (config.logging && config.logging.stdout && config.logging.stdout.enabled) {
 if (config.logging && config.logging.file) {
 	streams.push({
 			level: config.logging.file.level,
-			path: path.join(__dirname, '..', '..', config.logging.file.path)
+			path: path.join(__dirname, '..', config.logging.file.path)
 		})
 }
 

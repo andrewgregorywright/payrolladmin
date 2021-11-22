@@ -3,10 +3,21 @@
 
 
 
+.validation {
+	color: #c00;
+}
 
-.my-class {
-	display: block;
-	.inner-class {
-		display: flex;
+.emp-table__header .row {
+	font-size: 1.2rem;
+	border-bottom: 1px solid #ccc;
+}
+
+.emp-table__rows {
+	.row {
+		border-bottom: 1px solid #ccc;
+	}
+
+	.row:nth-child(odd) {
+		background-color: #efefef;
 	}
 }

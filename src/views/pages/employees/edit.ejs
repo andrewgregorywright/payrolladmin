@@ -4,11 +4,13 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<title>Home | PayrollAdmin</title>
+		<title>Edit Employee | PayrollAdmin</title>
 
 		<%-include('../../partials/jquery')%>
 		<%-include('../../partials/react')%>
 		<%-include('../../partials/bootstrap')%>
+
+		<link href="/public/css/general.css" rel="stylesheet" type="text/css" />
 
 	</head>
 	<body>
@@ -22,20 +24,10 @@
 					<div class="col">
 						<div id="main"
 							 class="mt-4">
-							<h1 class="text-center">Welcome!</h1>
+							<h1 class="text-center">Edit</h1>
 							<div class="row justify-content-center">
-								<div class="col col-lg-9 ">
-									<p class="mt-3">
-										Our software allows you to add, edit, and remove
-										employees from payroll.  You can also use our
-										salary calculator to figure out deductions.
-									</p>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col text-center">
-									<a class="btn btn-outline-secondary"
-									   href="/employees/all">View employee list</a>
+								<div class="col col-lg-9">
+									<div id="employees-edit"></div>
 								</div>
 							</div>
 						</div>
@@ -43,5 +35,6 @@
 				</div>
 			</div>
 		</div>
+		<input type="hidden" id="emp-id" value="<%=locals.id%>" />
 	</body>
 </html>

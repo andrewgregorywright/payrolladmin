@@ -12,7 +12,7 @@ usage () {
 		  OPTIONS
 
 		    -p                  Set the build environment to production.  Otherwise,
-			                    everything will be built for development.
+		                        everything will be built for development.
 
 		    -h                  Help.
 	EOF
@@ -43,27 +43,49 @@ done
 OPTIND=1
 
 bin=./node_modules/.bin
+rsync_options="-lmptgor"
 
-[[ $env == prod && -d dist ]] && rm -rf dist
+if [[ $env == prod && -d dist ]]; then
+	echo "> Cleaning the dist folder for a production build"
+	rm -rf dist
+fi
 
-mkdir -p dist/public/{css,scripts}
+echo "> Creating an empty log file"
+mkdir -p dist/{logs,public/{css,scripts}}
+touch dist/logs/payrolladmin.log
 
+echo "> Compiling scss files"
 ${bin}/sass							\
 	src/public/scss/general.scss	\
 	src/public/css/general.css
 
-rsync -lmptgor																\
-	src/{{config,data-access,logging,routes,views}/,app.js,index.js}		\
+echo "> Syncing server-side files to the dist directory"
+rsync ${rsync_options}													\
+	src/{{config,data-access,logging,routes,views},app.js,index.js}		\
 	dist/
 
-rsync -lmptgor				\
+echo "> Syncing the css folder to dist"
+rsync ${rsync_options}		\
 	src/public/css/			\
-	dist/public
+	dist/public/css/
+
+echo "> Syncing config file"
+rsync ${rsync_options}				\
+	payrolladmin.${env}.conf		\
+	dist/payrolladmin.conf
 
 echo "> Running babel..."
 NODE_ENV=dev ${bin}/babel									\
-	--presets @babel/preset-react							\
-	src/public/scripts										\
-	--out-dir dist/public/scripts
+	src/													\
+	--out-dir dist/											\
+	--config-file $(realpath babel.server.config.js)		\
+	--ignore "src/public","src/views"
+
+echo "> Running webpack..."
+if [[ $env == dev ]]; then
+	${bin}/webpack --mode development
+else
+	${bin}/webpack --mode production
+fi
 
 echo "> Finished!!"
